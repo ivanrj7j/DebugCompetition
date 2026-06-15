@@ -22,19 +22,24 @@ def find_anagrams(s: str, p: str) -> list[int]:
         return []
         
     p_count = {}
+    s_count = {}
     for char in p:
         p_count[char] = p_count.get(char, 0) + 1
         
-    s_count = {}
+    for i in range(np):
+        s_count[s[i]] = s_count.get(s[i], 0) + 1
+        
     res = []
-    
-    # Buggy sliding window logic. The window only grows and never shrinks 
-    # when the size exceeds len(p). Additionally, characters are never removed 
-    # from s_count. Students must design and implement the correct sliding window 
-    # map-updating bounds from scratch.
-    for i in range(ns):
-        char = s[i]
-        s_count[char] = s_count.get(char, 0) + 1
+    if s_count == p_count:
+        res.append(0)
+        
+    for i in range(np, ns):
+        new_char = s[i]
+        s_count[new_char] = s_count.get(new_char, 0) + 1
+        
+        old_char = s[i - np]
+        s_count[old_char] -= 1
+        # Logical error is kept (forgetting to delete keys when their value is 0)
         
         if s_count == p_count:
             res.append(i - np + 1)
