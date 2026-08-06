@@ -8,12 +8,11 @@ Your task is to fix all the bugs so that the code runs correctly and passes all 
 
 ## Before submitting
 
-1. Update the **README.md** with your:
+## Participant Details
 
-   * Full Name
-   * Email Address
-   * Phone Number
-
+* **Full Name:** Muhammed Sahil Subair
+* **Email Address:** mss.on.power@gmail.com
+* **Phone Number:** 8590697214
 ---
 
 ## 🚀 Step-by-Step Guide
