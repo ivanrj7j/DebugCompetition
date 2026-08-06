@@ -1,5 +1,11 @@
 # 🐛 Python Bug-Fixing Competition
 
+## Participant Information
+
+- **Full Name:** Jiphin George
+- **Email Address:** jiphingeorge80@gmail.com
+- **Phone Number:** 9526111190
+
 Welcome to the **Python Bug-Fixing Competition** organized by **ENCIDE MACE**!
 
 You will find **10 Python files** in the `problems/` directory. Each file contains a function designed to solve a specific programming problem. However, **every solution contains both syntax errors (which prevent the code from running) and logical errors (which produce incorrect results).**
