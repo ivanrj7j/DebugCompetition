@@ -10,9 +10,9 @@ Your task is to fix all the bugs so that the code runs correctly and passes all 
 
 1. Update the **README.md** with your:
 
-   * Full Name
-   * Email Address
-   * Phone Number
+   * Aromal Sanil
+   * aromalsanil2006@gmail.com
+   * +91 99462 83970
 
 ---
 
@@ -95,9 +95,9 @@ Before submitting:
 
 1. Update the **README.md** with your:
 
-   * Full Name
-   * Email Address
-   * Phone Number
+   * Aromal Sanil
+   * aromalsanil2006@gmail.com
+   * +91 99462 83970
 
 Then submit your solution:
 
