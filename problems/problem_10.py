@@ -32,12 +32,12 @@ def decode_string(s: str) -> str:
             curr_num = curr_num * 10 + int(char)
         elif char == "[":
             stack.append((curr_str, curr_num))
-            curr_str = ""
+            res = ""
             curr_num = 0
         elif char == "]":
             prev_str, num = stack.pop()
-            curr_str = prev_str + (curr_str * num)
+            res = prev_str + (curr_str * num)
         else:
-            res += char
+            curr_str += char
             
     return res
