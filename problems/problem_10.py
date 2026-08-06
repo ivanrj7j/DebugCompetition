@@ -31,13 +31,13 @@ def decode_string(s: str) -> str:
         if char.isdigit():
             curr_num = curr_num * 10 + int(char)
         elif char == "[":
-            stack.append((curr_str, curr_num))
+            stack.append((res, curr_num))
             res = ""
             curr_num = 0
         elif char == "]":
             prev_str, num = stack.pop()
-            res = prev_str + (curr_str * num)
+            res = prev_str + (res * num)
         else:
-            curr_str += char
+            res += char
             
     return res
