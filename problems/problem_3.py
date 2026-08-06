@@ -21,8 +21,8 @@ def three_sum(nums: list[int]) -> list[list[int]]:
     nums.sort()
     
     for i in range(len(nums) - 2):
-        if i > 0 and nums[i] == nums[i - 1]:
-            continue
+        # if i > 0 and nums[i] == nums[i - 1]:
+        #     continue
             
         # Naive and broken implementation:
         # Pointers are initialized, but the movement logic is naive and incorrect.
@@ -31,8 +31,14 @@ def three_sum(nums: list[int]) -> list[list[int]]:
         l, r = i + 1, len(nums) - 1
         while l < r:
             s = nums[i] + nums[l] + nums[r]
-            if s == 0:
+            if s == 0 and l!=r:
                 res.append([nums[i], nums[l], nums[r]])
-            l += 1
-            
-    return res
+            l+= 1
+            if l==r:
+                r-=1
+                l=i+1
+    ls=[]
+    for i in range(len(res)):
+        if res[i] not in ls:
+            ls.append(res[i])
+    return ls
