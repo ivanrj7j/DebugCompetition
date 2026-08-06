@@ -35,6 +35,13 @@ def find_anagrams(s: str, p: str) -> list[int]:
     for i in range(ns):
         char = s[i]
         s_count[char] = s_count.get(char, 0) + 1
+
+        if i >= np:
+            out_char = s[i - np]
+            if s_count[out_char] == 1:
+                del s_count[out_char]  # Delete key if count drops to 0
+            else:
+                s_count[out_char] -= 1
         
         if s_count == p_count:
             res.append(i - np + 1)

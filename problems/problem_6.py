@@ -24,5 +24,9 @@ def product_except_self(nums: list[int]) -> list[int]:
     # The backwards suffix product traversal is completely missing.
     # Students must write this logic from scratch to compute suffix products 
     # and combine them with the prefixes in res.
+    suffix = 1
+    for i in range(n - 1, -1, -1):
+        res[i] *= suffix
+        suffix *= nums[i]
         
     return res
