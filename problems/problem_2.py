@@ -23,7 +23,8 @@ def max_area(height: list[int]) -> int:
         area = (r - l) * min(height[l], height[r])
         res = max(res, area)
         
-        if height[l] > height[r]:
+        # Move the pointer representing the shorter line
+        if height[l] < height[r]:
             l += 1
         else:
             r -= 1

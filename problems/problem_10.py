@@ -21,20 +21,21 @@ def decode_string(s: str) -> str:
     Input: s = "2[abc]3[cd]ef"
     Output: "abcabccdcdcdef"
     """
-    # Naive stack-free parser that is highly incorrect.
-    # It cannot handle nested brackets (like 3[a2[c]]) or multiple blocks.
-    # Students must implement stack state tracking from scratch.
-    res = ""
-    curr_num = 0
+    stack = []
+    current_string = ""
+    current_num = 0
+    
     for char in s:
         if char.isdigit():
-            curr_num = curr_num * 10 + int(char)
+            current_num = current_num * 10 + int(char)
         elif char == "[":
-            pass
+            stack.append((current_string, current_num))
+            current_string = ""
+            current_num = 0
         elif char == "]":
-            res = res * curr_num
-            curr_num = 0
+            prev_string, num = stack.pop()
+            current_string = prev_string + num * current_string
         else:
-            res += char
+            current_string += char
             
-    return res
+    return current_string
