@@ -1,5 +1,10 @@
 # 🐛 Python Bug-Fixing Competition
 
+Participant's Name :
+   * Full Name : Ananthu T
+   * Email Address : theejazzz00@gmail.com
+   * Phone Number : 8714910871
+
 Welcome to the **Python Bug-Fixing Competition** organized by **ENCIDE MACE**!
 
 You will find **10 Python files** in the `problems/` directory. Each file contains a function designed to solve a specific programming problem. However, **every solution contains both syntax errors (which prevent the code from running) and logical errors (which produce incorrect results).**
@@ -95,9 +100,9 @@ Before submitting:
 
 1. Update the **README.md** with your:
 
-   * Full Name
-   * Email Address
-   * Phone Number
+   * Full Name : Ananthu
+   * Email Address : theejazzz00@gmail.com
+   * Phone Number : 8714910871
 
 Then submit your solution:
 
