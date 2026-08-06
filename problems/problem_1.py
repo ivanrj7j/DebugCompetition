@@ -16,17 +16,14 @@ def longest_substring(s: str) -> int:
     Explanation: The answer is "wke", with the length of 3.
     Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
     """
-    char_set = set()
-    l = 0
-    res = 0
-    
-    for r in range(len(s)):
-        while s[r] in char_set:
-            l += 1
-            char_set.remove(s[l])
-        char_set.add(s[r])
-        # Cheeky syntax error: trailing space after the backslash line continuation
-        res = max(res, \ 
-                  r - l + 1)
-        
-    return res
+    last_seen = {}
+    start = 0
+    longest = 0
+
+    for end, char in enumerate(s):
+        if char in last_seen and last_seen[char] >= start:
+            start = last_seen[char] + 1
+        last_seen[char] = end
+        longest = max(longest, end - start + 1)
+
+    return longest
