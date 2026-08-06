@@ -18,7 +18,7 @@ def find_anagrams(s: str, p: str) -> list[int]:
     The substring with start index = 2 is "ab", which is an anagram of "ab".
     """
     ns, np = len(s), len(p)
-    if ns < np:
+    if np==0 or ns < np:
         return []
         
     p_count = {}
@@ -35,8 +35,14 @@ def find_anagrams(s: str, p: str) -> list[int]:
     for i in range(ns):
         char = s[i]
         s_count[char] = s_count.get(char, 0) + 1
-        
-        if s_count == p_count:
-            res.append(i - np + 1)
+        if i >= np:
+            left_char = s[i - np]
+            s_count[left_char] -= 1
+            if s_count[left_char] == 0:
+                del s_count[left_char]
+            
+        if i >= np - 1 and s_count == p_count:
+            res.append(i - np + 1)       
+     
             
     return res
