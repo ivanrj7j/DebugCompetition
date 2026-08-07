@@ -95,9 +95,9 @@ Before submitting:
 
 1. Update the **README.md** with your:
 
-   * Full Name
-   * Email Address
-   * Phone Number
+   * Anandhu Babu
+   * anandhuvon2@gmail.com
+   * 9072357512
 
 Then submit your solution:
 
