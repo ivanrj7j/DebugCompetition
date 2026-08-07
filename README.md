@@ -10,9 +10,9 @@ Your task is to fix all the bugs so that the code runs correctly and passes all 
 
 1. Update the **README.md** with your:
 
-   * Full Name
-   * Email Address
-   * Phone Number
+   * Full Name : Mohammed Farhan K
+   * Email Address : farhancherushola@gmail.com
+   * Phone Number : 9846465260
 
 ---
 
