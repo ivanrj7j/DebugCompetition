@@ -26,13 +26,17 @@ def decode_string(s: str) -> str:
     # Students must implement stack state tracking from scratch.
     res = ""
     curr_num = 0
+    stack = []
     for char in s:
         if char.isdigit():
             curr_num = curr_num * 10 + int(char)
         elif char == "[":
-            pass
+            stack.append((res, curr_num))
+            res = ""
+            curr_num = 0
         elif char == "]":
-            res = res * curr_num
+            prev_res, prev_num = stack.pop()
+            res = prev_res + res * prev_num
             curr_num = 0
         else:
             res += char

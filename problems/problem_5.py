@@ -1,4 +1,5 @@
-def longest_consecutive(nums: list[int]) -> int:
+import typing
+def longest_consecutive(nums: typing.List[int]) ->int:
     """
     Given an unsorted array of integers nums, return the length of the longest 
     consecutive elements sequence.
@@ -18,13 +19,13 @@ def longest_consecutive(nums: list[int]) -> int:
     longest_streak = 0
     
     for num in num_set:
-        if num + 1 not in num_set:
+        if num - 1 not in num_set:
             current_num = num
             current_streak = 1
             
             while current_num + 1 in num_set:
                 current_num += 1
-				current_streak += 1
+                current_streak += 1
                 
             longest_streak = max(longest_streak, current_streak)
             

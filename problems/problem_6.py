@@ -20,7 +20,10 @@ def product_except_self(nums: list[int]) -> list[int]:
     for i in range(n):
         res[i] = prefix
         prefix *= nums[i]
-        
+    right_product = 1
+    for i in range(n - 1, -1, -1):
+        res[i] *= right_product
+        right_product *= nums[i]   
     # The backwards suffix product traversal is completely missing.
     # Students must write this logic from scratch to compute suffix products 
     # and combine them with the prefixes in res.
