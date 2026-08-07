@@ -18,7 +18,7 @@ def find_anagrams(s: str, p: str) -> list[int]:
     The substring with start index = 2 is "ab", which is an anagram of "ab".
     """
     ns, np = len(s), len(p)
-    if ns < np:
+    if ns < np or np==0:
         return []
         
     p_count = {}
@@ -32,11 +32,13 @@ def find_anagrams(s: str, p: str) -> list[int]:
     # when the size exceeds len(p). Additionally, characters are never removed 
     # from s_count. Students must design and implement the correct sliding window 
     # map-updating bounds from scratch.
-    for i in range(ns):
-        char = s[i]
-        s_count[char] = s_count.get(char, 0) + 1
+    for i in range(ns-np+1):
+        s_count = {}
+        for j in range(i,i+np):
+            char = s[j]
+            s_count[char] = s_count.get(char, 0) + 1
         
         if s_count == p_count:
-            res.append(i - np + 1)
+            res.append(i)
             
     return res

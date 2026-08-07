@@ -13,7 +13,7 @@ def merge_intervals(intervals: list[list[int]]) -> list[list[int]]:
     Output: [[1,5]]
     Explanation: Intervals [1,4] and [4,5] are considered overlapping.
     """
-    global intervals
+    # global intervals
     if not intervals:
         return []
         
@@ -21,6 +21,8 @@ def merge_intervals(intervals: list[list[int]]) -> list[list[int]]:
     
     merged = [intervals[0]]
     for interval in intervals[1:]:
+        if interval[1]<merged[-1][1]:
+                continue
         if interval[0] <= merged[-1][1]:
             merged[-1][1] = interval[1]
         else:

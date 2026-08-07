@@ -26,15 +26,28 @@ def decode_string(s: str) -> str:
     # Students must implement stack state tracking from scratch.
     res = ""
     curr_num = 0
+    stack=[]
     for char in s:
         if char.isdigit():
             curr_num = curr_num * 10 + int(char)
+            if len(stack)>0 and stack[-1]==1:
+                stack.pop()
+            stack.append(curr_num)
         elif char == "[":
-            pass
+            curr_num=0
+            stack.append(char)
         elif char == "]":
-            res = res * curr_num
-            curr_num = 0
+            c=stack.pop()
+            r=""
+            while c!="[":
+                r +=c
+                c=stack.pop()
+            # res = res * curr_num
+            # curr_num = 0
+            stack.append(r[::-1]*stack.pop())
         else:
-            res += char
-            
+            stack.append(char)
+    res=""
+    for i in stack:
+      res+=i
     return res
