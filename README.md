@@ -1,5 +1,11 @@
 # 🐛 Python Bug-Fixing Competition
 
+## Participant Details
+
+- Full Name: Tejas 
+- Email Address: tejas.connect25@gmail.com
+- Phone Number: +91 9847532988
+
 Welcome to the **Python Bug-Fixing Competition** organized by **ENCIDE MACE**!
 
 You will find **10 Python files** in the `problems/` directory. Each file contains a function designed to solve a specific programming problem. However, **every solution contains both syntax errors (which prevent the code from running) and logical errors (which produce incorrect results).**
@@ -10,7 +16,7 @@ Your task is to fix all the bugs so that the code runs correctly and passes all 
 
 1. Update the **README.md** with your:
 
-   * Full Name
+   * Full Name 
    * Email Address
    * Phone Number
 
