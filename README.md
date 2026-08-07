@@ -10,9 +10,9 @@ Your task is to fix all the bugs so that the code runs correctly and passes all 
 
 1. Update the **README.md** with your:
 
-   * Full Name
-   * Email Address
-   * Phone Number
+   * Faizan Ashiq
+   * faizanashiq07@gmail.com
+   * 9633147156
 
 ---
 
@@ -95,9 +95,9 @@ Before submitting:
 
 1. Update the **README.md** with your:
 
-   * Full Name
-   * Email Address
-   * Phone Number
+   * Faizan Ashiq
+   * faizanashiq07@gmail.com
+   * 9633147156
 
 Then submit your solution:
 

@@ -1,40 +1,26 @@
 def decode_string(s: str) -> str:
-    """
-    Given an encoded string, return its decoded string.
+    count_stack = []
+    string_stack = []
 
-    The encoding rule is: k[encoded_string], where the encoded_string inside the 
-    square brackets is being repeated exactly k times. Note that k is guaranteed 
-    to be a positive integer.
-
-    You may assume that the input string is always valid; there are no extra white spaces, 
-    square brackets are well-formed, etc. Furthermore, you may assume that the original 
-    data does not contain any digits and that digits are only for those repeat numbers, k. 
-    For example, there will not be input like 3a or 2[4].
-
-    Examples:
-    Input: s = "3[a]2[bc]"
-    Output: "aaabcbc"
-
-    Input: s = "3[a2[c]]"
-    Output: "accaccacc"
-
-    Input: s = "2[abc]3[cd]ef"
-    Output: "abcabccdcdcdef"
-    """
-    # Naive stack-free parser that is highly incorrect.
-    # It cannot handle nested brackets (like 3[a2[c]]) or multiple blocks.
-    # Students must implement stack state tracking from scratch.
-    res = ""
+    curr_str = ""
     curr_num = 0
+
     for char in s:
         if char.isdigit():
-            curr_num = curr_num * 10 + int(char)
+          curr_num = curr_num * 10 + int(char)
+
         elif char == "[":
-            pass
+          count_stack.append(curr_num)
+          string_stack.append(curr_str)
+          curr_num = 0
+          curr_str = ""
+
         elif char == "]":
-            res = res * curr_num
-            curr_num = 0
+          repeat = count_stack.pop()
+          prev = string_stack.pop()
+          curr_str = prev + curr_str * repeat
+
         else:
-            res += char
-            
-    return res
+          curr_str += char
+
+    return curr_str
