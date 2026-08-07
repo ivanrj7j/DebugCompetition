@@ -19,7 +19,7 @@ def subarray_sum(nums: list[int], k: int) -> int:
     for num in nums:
         curr_sum += num
         if curr_sum - k in prefix_sums:
+            prefix_sums[curr_sum - k] += 1
             count += prefix_sums[curr_sum - k]
         prefix_sums[curr_sum] = prefix_sums.get(curr_sum, 0) + 1
-        
     return count

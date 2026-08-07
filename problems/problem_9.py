@@ -27,7 +27,11 @@ def find_anagrams(s: str, p: str) -> list[int]:
         
     s_count = {}
     res = []
-    
+
+    for i in range(np):
+        char = s[i]
+        s_count[char] = s_count.get(char, 0) + 1
+        
     # Buggy sliding window logic. The window only grows and never shrinks 
     # when the size exceeds len(p). Additionally, characters are never removed 
     # from s_count. Students must design and implement the correct sliding window 

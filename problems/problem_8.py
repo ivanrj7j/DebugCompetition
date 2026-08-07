@@ -13,7 +13,7 @@ def merge_intervals(intervals: list[list[int]]) -> list[list[int]]:
     Output: [[1,5]]
     Explanation: Intervals [1,4] and [4,5] are considered overlapping.
     """
-    global intervals
+    # global intervals
     if not intervals:
         return []
         
