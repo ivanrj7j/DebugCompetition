@@ -1,31 +1,42 @@
-def max_area(height: list[int]) -> int:
+from collections import Counter
+
+def min_window(s: str, t: str) -> str:
     """
-    Given n non-negative integers height_1, height_2, ..., height_n, where each represents 
-    a point at coordinate (i, height_i). n vertical lines are drawn such that the two endpoints 
-    of the line i is at (i, height_i) and (i, 0). Find two lines that together with the x-axis 
-    forms a container, such that the container contains the most water.
-
-    Return the maximum amount of water a container can store.
-
-    Examples:
-    Input: height = [1,8,6,2,5,4,8,3,7]
-    Output: 49
-    Explanation: The vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, 
-    the max area of water the container can contain is 49.
-
-    Input: height = [1,1]
-    Output: 1
+    Given two strings s and t of lengths m and n respectively, return the minimum window 
+    substring of s such that every character in t (including duplicates) is included in the window. 
+    If there is no such substring, return the empty string "".
     """
-    l, r = 0, len(height) - 1
-    res = 0
-    
-    while l < r:
-        area = (r - l) * min(height[l], height[r])
-        res = max(res, area)
+    if not t or not s:
+        return ""
         
-        if height[l] > height[r]:
-            l += 1
-        else:
-            r -= 1
+    dict_t = Counter(t)
+    required = len(dict_t)
+    
+    l, r = 0, 0
+    formed = 0
+    window_counts = {}
+    
+    ans = float("inf"), None, None
+    
+    while r < len(s):
+        character = s[r]
+        window_counts[character] = window_counts.get(character, 0) + 1
+        
+        if character in dict_t and window_counts[character] == dict_t[character]:
+            formed += 1
             
-    return res
+        while l <= r and formed == required:
+            character = s[l]
+            
+            if r - l + 1 < ans[0]:
+                ans = (r - l + 1, l, r)
+                
+            window_counts[character] -= 1
+            if character in dict_t and window_counts[character] <= dict_t[character]: # Bug: <= instead of < allows formed to decrement prematurely
+                formed -= 1
+                
+            l += 1
+            
+        r += 1
+        
+    return "" if ans[0] == float("inf") else s[ans[1]:ans[2] + 1]

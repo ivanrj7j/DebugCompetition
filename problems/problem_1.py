@@ -1,32 +1,18 @@
-def longest_substring(s: str) -> int:
+def min_sub_array_len(target: int, nums: list[int]) -> int:
     """
-    Given a string s, find the length of the longest substring without repeating characters.
-
-    Examples:
-    Input: s = "abcabcbb"
-    Output: 3
-    Explanation: The answer is "abc", with the length of 3.
-
-    Input: s = "bbbbb"
-    Output: 1
-    Explanation: The answer is "b", with the length of 1.
-
-    Input: s = "pwwkew"
-    Output: 3
-    Explanation: The answer is "wke", with the length of 3.
-    Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+    Given an array of positive integers nums and a positive integer target, 
+    return the minimal length of a subarray whose sum is greater than or equal to target. 
+    If there is no such subarray, return 0 instead.
     """
-    char_set = set()
     l = 0
-    res = 0
+    curr_sum = 0
+    res = float('inf')
     
-    for r in range(len(s)):
-        while s[r] in char_set:
+    for r in range(len(nums)):
+        curr_sum += nums[r]
+        while curr_sum >= target:
+            res = min(res, r - l)  # Bug: Off-by-one in window length calculation
+            curr_sum -= nums[l]
             l += 1
-            char_set.remove(s[l])
-        char_set.add(s[r])
-        # Cheeky syntax error: trailing space after the backslash line continuation
-        res = max(res, \ 
-                  r - l + 1)
-        
-    return res
+            
+    return res if res != float('inf') else 0

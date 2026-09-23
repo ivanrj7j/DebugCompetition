@@ -1,6 +1,6 @@
 # 🐛 Python Bug-Fixing Competition
 
-Welcome to the **Python Bug-Fixing Competition** organized by **ENCIDE MACE**!
+Welcome to the **Python Bug-Fixing Competition** organized by the **Department of Computer Science & Engineering, Mar Athanasius College of Engineering** as part of our tech fest **Takshak**!
 
 You will find **10 Python files** in the `problems/` directory. Each file contains a function designed to solve a specific programming problem. However, **every solution contains both syntax errors (which prevent the code from running) and logical errors (which produce incorrect results).**
 

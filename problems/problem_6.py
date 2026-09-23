@@ -1,28 +1,19 @@
-def product_except_self(nums: list[int]) -> list[int]:
+def check_subarray_sum(nums: list[int], k: int) -> bool:
     """
-    Given an integer array nums, return an array answer such that answer[i] is 
-    equal to the product of all the elements of nums except nums[i].
-
-    The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
-    You must write an algorithm that runs in O(n) time and without using the division division.
-
-    Examples:
-    Input: nums = [1,2,3,4]
-    Output: [24,12,8,6]
-
-    Input: nums = [-1,1,0,-3,3]
-    Output: [0,0,9,0,0]
+    Given an integer array nums and an integer k, return true if nums has a good subarray of length at least 2 
+    whose elements sum up to a multiple of k, or false otherwise.
     """
-    n = len(nums)
-    res = [1] * n
+    remainder_map = {0: -1}
+    curr_sum = 0
     
-    prefix = 1
-    for i in range(n):
-        res[i] = prefix
-        prefix *= nums[i]
+    for i in range(len(nums)):
+        curr_sum += nums[i]
+        rem = curr_sum % k
         
-    # The backwards suffix product traversal is completely missing.
-    # Students must write this logic from scratch to compute suffix products 
-    # and combine them with the prefixes in res.
-        
-    return res
+        if rem in remainder_map:
+            if i - remainder_map[rem] > 2:  # Bug: > 2 instead of >= 2 (misses subarrays of length 2)
+                return True
+        else:
+            remainder_map[rem] = i
+            
+    return False

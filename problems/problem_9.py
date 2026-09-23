@@ -1,42 +1,23 @@
-def find_anagrams(s: str, p: str) -> list[int]:
+def insert_interval(intervals: list[list[int]], newInterval: list[int]) -> list[list[int]]:
     """
-    Given two strings s and p, return an array of all the start indices of p's 
-    anagrams in s. You may return the answer in any order.
+    You are given an array of non-overlapping intervals intervals where intervals[i] = [start_i, end_i] 
+    sorted in ascending order by start_i. You are also given an interval newInterval = [start, end] 
+    that represents the start and end of another interval.
 
-    Examples:
-    Input: s = "cbaebabacd", p = "abc"
-    Output: [0,6]
-    Explanation:
-    The substring with start index = 0 is "cba", which is an anagram of "abc".
-    The substring with start index = 6 is "bac", which is an anagram of "abc".
-
-    Input: s = "abab", p = "ab"
-    Output: [0,1,2]
-    Explanation:
-    The substring with start index = 0 is "ab", which is an anagram of "ab".
-    The substring with start index = 1 is "ba", which is an anagram of "ab".
-    The substring with start index = 2 is "ab", which is an anagram of "ab".
+    Insert newInterval into intervals such that intervals is still sorted in ascending order by start_i 
+    and intervals still does not have any overlapping intervals (merge overlapping intervals if necessary).
     """
-    ns, np = len(s), len(p)
-    if ns < np:
-        return []
-        
-    p_count = {}
-    for char in p:
-        p_count[char] = p_count.get(char, 0) + 1
-        
-    s_count = {}
     res = []
     
-    # Buggy sliding window logic. The window only grows and never shrinks 
-    # when the size exceeds len(p). Additionally, characters are never removed 
-    # from s_count. Students must design and implement the correct sliding window 
-    # map-updating bounds from scratch.
-    for i in range(ns):
-        char = s[i]
-        s_count[char] = s_count.get(char, 0) + 1
-        
-        if s_count == p_count:
-            res.append(i - np + 1)
+    for i in range(len(intervals)):
+        if newInterval[1] < intervals[i][0]:
+            res.append(newInterval)
+            return res + intervals[i:]
+        elif newInterval[0] > intervals[i][1]:
+            res.append(intervals[i])
+        else:
+            # Bug: Does not update newInterval[1] with max(newInterval[1], intervals[i][1])
+            newInterval = [min(newInterval[0], intervals[i][0]), intervals[i][1]]
             
+    res.append(newInterval)
     return res

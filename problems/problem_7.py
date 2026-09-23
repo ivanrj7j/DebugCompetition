@@ -1,25 +1,42 @@
-def subarray_sum(nums: list[int], k: int) -> int:
+def check_inclusion(s1: str, s2: str) -> bool:
     """
-    Given an array of integers nums and an integer k, return the total number of 
-    subarrays whose sum equals to k.
-
-    A subarray is a contiguous non-empty sequence of elements within an array.
-
-    Examples:
-    Input: nums = [1,1,1], k = 2
-    Output: 2
-
-    Input: nums = [1,2,3], k = 3
-    Output: 2
+    Given two strings s1 and s2, return true if s2 contains a permutation of s1, or false otherwise.
+    In other words, return true if one of s1's permutations is the substring of s2.
     """
-    count = 0
-    curr_sum = 0
-    prefix_sums = {}
-    
-    for num in nums:
-        curr_sum += num
-        if curr_sum - k in prefix_sums:
-            count += prefix_sums[curr_sum - k]
-        prefix_sums[curr_sum] = prefix_sums.get(curr_sum, 0) + 1
+    if len(s1) > len(s2):
+        return False
         
-    return count
+    s1_count = [0] * 26
+    s2_count = [0] * 26
+    
+    for i in range(len(s1)):
+        s1_count[ord(s1[i]) - ord('a')] += 1
+        s2_count[ord(s2[i]) - ord('a')] += 1
+        
+    matches = 0
+    for i in range(26):
+        if s1_count[i] == s2_count[i]:
+            matches += 1
+            
+    l = 0
+    for r in range(len(s1), len(s2)):
+        if matches == 26:
+            return True
+            
+        index = ord(s2[r]) - ord('a')
+        s2_count[index] += 1
+        if s1_count[index] == s2_count[index]:
+            matches += 1
+        elif s1_count[index] + 1 == s2_count[index]:
+            matches -= 1
+            
+        index = ord(s2[l]) - ord('a')
+        s2_count[index] -= 1
+        if s1_count[index] == s2_count[index]:
+            matches += 1
+        elif s1_count[index] - 1 == s2_count[index]:
+            matches -= 1
+            
+        l += 1
+        
+    return matches == 26
